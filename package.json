@@ -1,0 +1,18 @@
+{
+  "name": "jp_blond",
+  "version": "1.0.0",
+  "description": "unit & integration tests",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "file-system": "^2.2.2",
+    "fs": "^0.0.1-security",
+    "jest": "^24.7.1",
+    "jsonwebtoken": "^8.5.1",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
