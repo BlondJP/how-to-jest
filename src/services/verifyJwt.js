@@ -1,27 +1,22 @@
-async function verifyJwt({fs, path, jwt}, authorization)
-{
-  // console.log(typeof fs, typeof path,typeof jwt,typeof authorization)
-  console.log('authorization', authorization)
-
-  const splits = authorization.split(' ')
-  const token = splits[1]
+async function verifyJwt({ fs, path, jwt }, authorization) {
+  const splits = authorization.split(" ");
+  const token = splits[1];
 
   if (!token) {
-      throw new Error('Jwt not Found')
+    throw new Error("Jwt not Found");
   }
-  const publicKeyPath = path.basename('public.key')
-  const publicKey = fs.readFileSync(publicKeyPath)
+  const publicKeyPath = path.basename("public.key");
+  const publicKey = fs.readFileSync(publicKeyPath);
 
-  const payload = await jwt.verify(token, publicKey)
-  const uuid = payload['sub']
+  const payload = await jwt.verify(token, publicKey);
+  const uuid = payload["sub"];
 
   if (!uuid) {
-      throw new Error('Jwt is not valid');
+    throw new Error("Jwt is not valid");
   }
 
   return uuid;
 }
-
 
 module.exports = verifyJwt;
 
@@ -31,6 +26,6 @@ module.exports = verifyJwt;
 
 //console.log(publicKey, authorization)
 // (async function () {
-  // const uuid = await verifyJwt(authorization, publicKey);
-  // console.log(uuid)
+// const uuid = await verifyJwt(authorization, publicKey);
+// console.log(uuid)
 // })();
